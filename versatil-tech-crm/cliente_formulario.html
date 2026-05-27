@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Cliente | Versátil Tech</title>
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/clientes.css">
+    
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body>
+    
+    <div class="app-container">
+        
+        <aside class="sidebar" id="sidebar">
+            <a href="dashboard.html" class="sidebar-header"><img src="assets/images/logo-versatil.png" alt="Logo Versátil Tech" class="sidebar-logo"><span class="sidebar-logo-text">Versátil Tech</span></a>
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-link"><i class="ph-fill ph-house"></i> <span>Dashboard</span></a>
+                <a href="clientes.html" class="nav-link active"><i class="ph-fill ph-users"></i> <span>Clientes</span></a>
+                <a href="tickets.html" class="nav-link"><i class="ph-fill ph-ticket"></i> <span>Tickets</span></a>
+                <a href="usuarios.html" class="nav-link"><i class="ph-fill ph-user-list"></i> <span>Usuários</span></a>
+                <a href="conhecimento.html" class="nav-link"><i class="ph-fill ph-books"></i> <span>Conhecimento</span></a>
+            </nav>
+        </aside>
+        
+        <div class="mobile-overlay" id="mobileOverlay"></div>
+        
+        <div class="main-content">
+            <header class="navbar">
+                <div class="navbar-left">
+                     <button class="mobile-menu-toggle" id="mobileMenuToggle"><i class="ph-fill ph-list"></i></button>
+                    <h1 class="navbar-title">Cadastro de Cliente</h1>
+                </div>
+                <div class="navbar-right">
+                     <div class="user-profile"><span>[Nome]</span><div class="user-avatar"><span>U</span></div></div>
+                    <a href="index.html" class="logout-button" title="Sair"><i class="ph-fill ph-sign-out"></i></a>
+                </div>
+            </header>
+            
+            <main class="content-area">
+                <form id="clienteForm" class="dense-form">
+                    <div class="form-section-header">DADOS DO CLIENTE</div>
+                    <div class="form-section">
+                        <div class="form-grid-cliente">
+                            <h4 class="form-row-label g-col-full">Identificação Principal</h4>
+
+                            <!-- Linha 1 ajustada: Código (1) + Status (2) + Nome (5) + Razão (4) -->
+                            <div class="form-group g-col-1">
+                                <label for="codigo">Código</label>
+                                <input type="text" id="codigo">
+                            </div>
+
+                            <div class="form-group g-col-2">
+                                <label for="status">Status</label>
+                                <select id="status">
+                                    <option value="Ativo">Ativo</option>
+                                    <option value="Inativo">Inativo</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group g-col-5">
+                                <label for="nomeFantasia">Nome Fantasia</label>
+                                <input type="text" id="nomeFantasia" required>
+                            </div>
+
+                            <div class="form-group g-col-4">
+                                <label for="razaoSocial">Razão Social</label>
+                                <input type="text" id="razaoSocial">
+                            </div>
+
+                            <!-- Demais campos permanecem iguais -->
+                            <div class="form-group g-col-3"><label for="cnpj">CNPJ</label><input type="text" id="cnpj"></div>
+                            <div class="form-group g-col-3"><label for="ie">Inscrição Estadual (I.E)</label><input type="text" id="ie"></div>
+                            <div class="form-group g-col-6 with-button">
+                                <label for="rede">Rede</label>
+                                <div class="input-with-button">
+                                    <select id="rede"><option>Selecione uma rede</option><option>Rede Esperança</option><option>Rede Martinelli</option></select>
+                                    <button type="button" class="btn btn-secondary btn-add-alongside" id="addRedeBtn">
+                                        <i class="ph ph-plus"></i>
+                                        <span>Nova Rede</span>
+                                    </button>
+                                    <button type="button" class="btn btn-danger btn-add-alongside" id="removeRedeBtn" title="Remover rede selecionada">
+                                        <i class="ph ph-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <h4 class="form-row-label g-col-full">Endereço</h4>
+                            <div class="form-group g-col-2"><label for="cep">CEP</label><input type="text" id="cep"></div>
+                            <div class="form-group g-col-6"><label for="endereco">Endereço e Número</label><input type="text" id="endereco"></div>
+                            <div class="form-group g-col-4"><label for="bairro">Bairro</label><input type="text" id="bairro"></div>
+                            <div class="form-group g-col-5"><label for="cidade">Cidade</label><input type="text" id="cidade"></div>
+                            <div class="form-group g-col-1"><label for="estado">UF</label><select id="estado"><option>SP</option><option>RJ</option></select></div>
+
+                            <h4 class="form-row-label g-col-full">Contato</h4>
+                            <div class="form-group g-col-4"><label for="telefone">Telefone</label><input type="tel" id="telefone"></div>
+                            <div class="form-group g-col-4"><label for="responsavel">Responsável</label><input type="text" id="responsavel"></div>
+                            <div class="form-group g-col-4"><label for="email">Email</label><input type="email" id="email"></div>
+                            
+                            <h4 class="form-row-label g-col-full">Observações</h4>
+                            <div class="form-group g-col-full"><label for="infoAdicionais">Informações Adicionais</label><textarea id="infoAdicionais" rows="3"></textarea></div>
+                        </div>
+                    </div>
+
+                    <div class="form-section-header">DADOS TÉCNICOS</div>
+                    <div class="form-section">
+                        <div class="form-grid-tecnico">
+                           <div class="form-group g-col-3"><label for="tipoBanco">Tipo de Banco</label><select id="tipoBanco"><option>BD - Banco Unico</option><option>Multi Banco</option></select></div>
+                            <div class="form-group g-col-3"><label for="versao">Versão</label><input type="text" id="versao"></div>
+                            <div class="form-group g-col-3"><label for="release">Release</label><input type="text" id="release"></div>
+                            <div class="form-group g-col-3"><label for="trigger">Trigger?</label><select id="trigger"><option>Não</option><option>Sim</option></select></div>
+                            <div class="form-group g-col-6"><label for="contaGoogle">Conta Google</label><input type="text" id="contaGoogle"></div>
+                            <div class="form-group g-col-6"><label for="versaoTrigger">Versão da Trigger</label><input type="text" id="versaoTrigger"></div>
+                            <div class="form-group g-col-full"><label for="linkBackup">Link Backup</label><input type="url" id="linkBackup"></div>
+                            <div class="form-group g-col-full"><label for="linkContador">Link Contador</label><input type="url" id="linkContador"></div>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="form-section-header">EQUIPAMENTOS E ACESSO REMOTO</div>
+                <div class="form-section">
+                     <div class="access-header">
+                        <p>Gerencie os acessos remotos para este cliente.</p>
+                        <button type="button" class="btn btn-primary" id="openAccessModalBtn">
+                            <i class="ph-fill ph-plus-circle"></i>
+                            Adicionar Novo Acesso
+                        </button>
+                    </div>
+                    <div class="table-container">
+                        <table id="accessTable">
+                            <thead>
+                                <tr>
+                                    <th>Estação</th>
+                                    <th>Tipo de Acesso</th>
+                                    <th>ID / Endereço</th>
+                                    <th>Usuário</th>
+                                    <th class="actions-header">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="accessTableBody">
+                                <tr id="noAccessMessageRow">
+                                    <td colspan="5" class="empty-message">Nenhum acesso cadastrado.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="form-actions-footer">
+                    <a href="clientes.html" class="btn btn-secondary">Cancelar</a>
+                    <button type="submit" form="clienteForm" class="btn btn-primary">Salvar Cliente</button>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Modal Nova Rede -->
+    <div class="modal-overlay" id="addRedeModalOverlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Cadastrar Nova Rede</h3>
+                <button class="modal-close-btn" id="closeRedeModalBtn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="addRedeForm">
+                    <div class="form-group">
+                        <label for="newRedeName">Nome da Rede</label>
+                        <input type="text" id="newRedeName" required>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" id="cancelRedeModalBtn">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Salvar Rede</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Acessos -->
+    <div class="modal-overlay" id="accessModalOverlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Adicionar Novo Acesso</h3>
+                <button class="modal-close-btn" id="closeAccessModalBtn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="accessForm">
+                    <div class="form-grid-modal">
+                        <div class="form-group g-col-full"><label for="estacao">Nome da Estação (Ex: Servidor, Caixa 01)</label><input type="text" id="estacao" required></div>
+                        <div class="form-group g-col-half">
+                            <label for="tipoAcesso">Tipo de Acesso</label>
+                            <select id="tipoAcesso">
+                                <option value="AnyDesk">AnyDesk</option>
+                                <option value="TeamViewer">TeamViewer</option>
+                                <option value="Servidor">Acesso ao Servidor (Terminal/RDP)</option>
+                            </select>
+                        </div>
+                        <div class="form-group g-col-half">
+                            <label for="syncMonitor">Sync / Monitor</label>
+                            <select id="syncMonitor"><option>Nenhum</option><option>Sync</option><option>Monitor</option><option>Ambos</option></select>
+                        </div>
+                        <div class="form-group g-col-half"><label for="acessoId">ID / Endereço IP</label><input type="text" id="acessoId"></div>
+                        <div class="form-group g-col-half"><label for="acessoUsuario">Usuário</label><input type="text" id="acessoUsuario"></div>
+                        <div class="form-group g-col-full"><label for="acessoSenha">Senha</label><input type="password" id="acessoSenha"></div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" id="cancelAccessModalBtn">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Salvar Acesso</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/clientes.js" defer></script>
+</body>
+</html>

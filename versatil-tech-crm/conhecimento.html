@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Base de Conhecimento | Versátil Tech</title>
+  <link rel="icon" type="image/png" href="assets/images/logo-versatil.png">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/clientes.css">
+  <link rel="stylesheet" href="assets/css/conhecimento.css">
+
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body>
+  <div class="app-container">
+    <aside class="sidebar" id="sidebar">
+      <a href="dashboard.html" class="sidebar-header">
+        <img src="assets/images/logo-versatil.png" alt="Logo Versátil Tech" class="sidebar-logo">
+        <span class="sidebar-logo-text">Versátil Tech</span>
+      </a>
+      <nav class="sidebar-nav">
+        <a href="dashboard.html" class="nav-link"><i class="ph-fill ph-house"></i> <span>Dashboard</span></a>
+        <a href="clientes.html" class="nav-link"><i class="ph-fill ph-users"></i> <span>Clientes</span></a>
+        <a href="tickets.html" class="nav-link"><i class="ph-fill ph-ticket"></i> <span>Tickets</span></a>
+        <a href="usuarios.html" class="nav-link"><i class="ph-fill ph-user-list"></i> <span>Usuários</span></a>
+        <a href="conhecimento.html" class="nav-link active"><i class="ph-fill ph-books"></i> <span>Conhecimento</span></a>
+      </nav>
+    </aside>
+
+    <div class="main-content">
+      <header class="navbar">
+        <div class="navbar-left">
+          <button class="mobile-menu-toggle" id="mobileMenuToggle"><i class="ph-fill ph-list"></i></button>
+          <h1 class="navbar-title">Base de Conhecimento</h1>
+        </div>
+        <div class="navbar-right">
+          <div class="user-profile"><span>[Nome]</span><div class="user-avatar"><span>U</span></div></div>
+          <a href="index.html" class="logout-button" title="Sair"><i class="ph-fill ph-sign-out"></i></a>
+        </div>
+      </header>
+
+      <main class="content-area">
+        <!-- Cabeçalho compacto: busca + botão na mesma linha -->
+        <div class="page-header kb-header">
+          <div class="kb-search">
+            <i class="ph ph-magnifying-glass"></i>
+            <input type="search" id="searchInput" placeholder="Digite para buscar um artigo...">
+          </div>
+          <a href="artigo_formulario.html" class="btn btn-primary">
+            <i class="ph-fill ph-plus-circle"></i>
+            Criar Novo Artigo
+          </a>
+        </div>
+
+        <!-- Filtros por categoria (inclui Vídeos) -->
+        <div class="search-and-filter-bar">
+          <div class="category-filters">
+            <button class="filter-btn active" data-category="todos">Todos</button>
+            <button class="filter-btn" data-category="sistema">Sistema</button>
+            <button class="filter-btn" data-category="fiscal">Fiscal</button>
+            <button class="filter-btn" data-category="hardware">Hardware</button>
+            <button class="filter-btn" data-category="videos">Vídeos</button>
+          </div>
+        </div>
+
+        <!-- Grid de artigos: começa com alguns exemplos estáticos -->
+        <div class="articles-grid" id="articlesGrid">
+          <div class="article-card"
+               data-category="fiscal"
+               data-title="Como emitir uma Nota Fiscal de Devolução (NFe)"
+               data-link="https://www.nfe.fazenda.gov.br/portal/principal.aspx">
+            <span class="category-tag category--fiscal">Fiscal</span>
+            <h3>Como emitir uma Nota Fiscal de Devolução (NFe)</h3>
+            <p>Passo a passo para gerar NFe de devolução quando um cliente retorna um produto.</p>
+            <button class="btn btn-secondary article-open">
+              <i class="ph ph-book-open"></i> Ler
+            </button>
+            <div class="article-full" hidden>
+              <p>Este guia descreve o fluxo de devolução com CFOPs comuns, prazos e cuidados fiscais.</p>
+            </div>
+          </div>
+
+          <div class="article-card"
+               data-category="sistema"
+               data-title="Erro &quot;Banco de Dados Não Conectado&quot; — como resolver"
+               data-link="">
+            <span class="category-tag category--sistema">Sistema</span>
+            <h3>Resolvendo o erro "Banco de Dados Não Conectado"</h3>
+            <p>Verifique o serviço do banco, credenciais e conectividade antes de reiniciar o PDV.</p>
+            <button class="btn btn-secondary article-open">
+              <i class="ph ph-book-open"></i> Ler
+            </button>
+            <div class="article-full" hidden>
+              <ul>
+                <li>Checar serviço do banco</li>
+                <li>Validar credenciais</li>
+                <li>Testar ping e portas</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="article-card"
+               data-category="hardware"
+               data-title="Configurando impressora térmica Bematech MP-4200"
+               data-link="https://bematech.com.br">
+            <span class="category-tag category--hardware">Hardware</span>
+            <h3>Configurando a Impressora Térmica Bematech MP-4200</h3>
+            <p>Instalação de drivers, porta correta e testes de impressão no PDV.</p>
+            <button class="btn btn-secondary article-open">
+              <i class="ph ph-book-open"></i> Ler
+            </button>
+            <div class="article-full" hidden>
+              <p>Inclui mapeamento de porta, atualização de firmware e alinhamento de bobina.</p>
+            </div>
+          </div>
+
+          <div class="article-card"
+               data-category="videos"
+               data-title="Vídeo: Ajuste de CFOP na NFe"
+               data-link="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
+            <span class="category-tag category--videos">Vídeos</span>
+            <h3>Vídeo: Ajuste de CFOP na NFe</h3>
+            <p>Assista ao passo a passo para escolher o CFOP correto em operações de venda e devolução.</p>
+            <button class="btn btn-secondary article-open">
+              <i class="ph ph-play-circle"></i> Assistir
+            </button>
+            <div class="article-full" hidden>
+              <p>Este vídeo cobre os principais cenários de CFOP no dia a dia do posto.</p>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Modal de visualização do artigo (reuso de estilos globais .modal/.modal-overlay) -->
+  <div class="modal-overlay" id="articleModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="articleModalTitle">Título do Artigo</h3>
+        <button class="modal-close-btn" id="articleModalCloseX" aria-label="Fechar">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="article-modal-meta">
+          <span id="articleModalCategory" class="category-tag"></span>
+          <a id="articleModalLink" class="btn btn-primary" href="#" target="_blank" rel="noopener" style="margin-left:auto;display:none;">
+            <i class="ph ph-link-simple"></i> Abrir link
+          </a>
+        </div>
+        <div id="articleModalContent" class="article-modal-content"></div>
+        <div class="form-actions" style="justify-content:flex-end;">
+          <button class="btn btn-secondary" id="articleModalCloseBtn">Fechar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/conhecimento.js" defer></script>
+</body>
+</html>

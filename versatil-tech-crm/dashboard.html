@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Painel inicial | Versátil Tech</title>
+  <link rel="icon" type="image/png" href="assets/images/logo-versatil.png">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/clientes.css">
+  <link rel="stylesheet" href="assets/css/tickets.css">
+
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+    /* Trava 1: Garante que o contêiner principal permita o encolhimento da tela (Resolve o corte geral) */
+    .main-content {
+      min-width: 0; 
+    }
+
+    /* Trava 2: Impede que a área de conteúdo passe de 100% */
+    .content-area {
+      box-sizing: border-box;
+      max-width: 100%;
+    }
+
+    .charts-grid {
+      display: grid;
+      /* O min(100%, 350px) garante que os gráficos encolham e caiam para a próxima linha */
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr));
+      gap: 24px;
+      margin-top: 24px;
+      margin-bottom: 32px;
+    }
+    
+    .chart-card {
+      background-color: var(--cor-superficie);
+      border: 1px solid var(--cor-borda);
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+      
+      /* Trava 3: Obriga o Chart.js a respeitar os limites do card */
+      min-width: 0; 
+      overflow: hidden;
+    }
+    
+    .chart-card h3 {
+      font-size: 16px;
+      margin-bottom: 20px;
+      color: var(--cor-texto-principal);
+    }
+    
+    .chart-container {
+      position: relative;
+      height: 250px;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div class="app-container">
+    <aside class="sidebar" id="sidebar">
+      <a href="dashboard.html" class="sidebar-header">
+        <img src="assets/images/logo-versatil.png" alt="Logo Versátil Tech" class="sidebar-logo">
+        <span class="sidebar-logo-text">Versátil Tech</span>
+      </a>
+      <nav class="sidebar-nav">
+        <a href="dashboard.html" class="nav-link active"><i class="ph-fill ph-house"></i> <span>Painel</span></a>
+        <a href="clientes.html" class="nav-link"><i class="ph-fill ph-users"></i> <span>Clientes</span></a>
+        <a href="tickets.html" class="nav-link"><i class="ph-fill ph-ticket"></i> <span>Tickets</span></a>
+        <a href="usuarios.html" class="nav-link"><i class="ph-fill ph-user-list"></i> <span>Usuários</span></a>
+        <a href="conhecimento.html" class="nav-link"><i class="ph-fill ph-books"></i> <span>Conhecimento</span></a>
+      </nav>
+    </aside>
+
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+
+    <div class="main-content">
+      <header class="navbar">
+        <div class="navbar-left">
+          <button class="mobile-menu-toggle" id="mobileMenuToggle"><i class="ph-fill ph-list"></i></button>
+          <h1 class="navbar-title">Painel inicial</h1>
+        </div>
+        <div class="navbar-right">
+          <div class="user-profile"><span>[Nome]</span><div class="user-avatar"><span>C</span></div></div>
+          <a href="index.html" class="logout-button" title="Sair"><i class="ph-fill ph-sign-out"></i></a>
+        </div>
+      </header>
+
+      <main class="content-area">
+        <div class="summary-cards">
+          <div class="summary-card">
+            <div class="card-icon" style="background-color:#f8d7da;">
+              <i class="ph-fill ph-warning-octagon" style="color:#842029;"></i>
+            </div>
+            <div class="card-info">
+              <span class="card-value" id="metricOpen">12</span>
+              <span class="card-title">Abertos</span>
+            </div>
+          </div>
+
+          <div class="summary-card">
+            <div class="card-icon" style="background-color:#fff3cd;">
+              <i class="ph-fill ph-clock-counter-clockwise" style="color:#664d03;"></i>
+            </div>
+            <div class="card-info">
+              <span class="card-value" id="metricProgress">8</span>
+              <span class="card-title">Em Andamento</span>
+            </div>
+          </div>
+
+          <div class="summary-card">
+            <div class="card-icon" style="background-color:#d1e7dd;">
+              <i class="ph-fill ph-check-circle" style="color:#0f5132;"></i>
+            </div>
+            <div class="card-info">
+              <span class="card-value" id="metricDone">45</span>
+              <span class="card-title">Concluídos (Mês)</span>
+            </div>
+          </div>
+        </div>
+
+        <section class="charts-grid">
+          <div class="chart-card">
+            <h3>Volume de Tickets (Últimos 7 dias)</h3>
+            <div class="chart-container">
+              <canvas id="volumeChart"></canvas>
+            </div>
+          </div>
+
+          <div class="chart-card">
+            <h3>Distribuição por Status</h3>
+            <div class="chart-container">
+              <canvas id="statusChart"></canvas>
+            </div>
+          </div>
+        </section>
+
+        <section class="quick-access">
+          <h2>Acesso Rápido</h2>
+          <div class="access-links">
+            <a href="ticket_formulario.html" class="access-link-card">
+              <i class="ph-fill ph-plus-circle"></i>
+              <span>Novo Ticket</span>
+            </a>
+            <a href="clientes.html" class="access-link-card">
+              <i class="ph-fill ph-users"></i>
+              <span>Ver Clientes</span>
+            </a>
+            <a href="conhecimento.html" class="access-link-card">
+              <i class="ph-fill ph-magnifying-glass"></i>
+              <span>Base de Conhecimento</span>
+            </a>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/dashboard.js" defer></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      
+      // 1. Configuração do Gráfico de Volume (Barras)
+      const ctxVolume = document.getElementById('volumeChart').getContext('2d');
+      new Chart(ctxVolume, {
+        type: 'bar',
+        data: {
+          labels: ['Qui', 'Sex', 'Sáb', 'Dom', 'Seg', 'Ter', 'Qua'],
+          datasets: [{
+            label: 'Tickets Abertos',
+            data: [12, 19, 3, 5, 22, 15, 10],
+            backgroundColor: '#232ccb',
+            borderRadius: 4
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false }
+          },
+          scales: {
+            y: { beginAtZero: true, grid: { borderDash: [2, 4], color: '#e9ecef' } },
+            x: { grid: { display: false } }
+          }
+        }
+      });
+
+      // 2. Configuração do Gráfico de Status (Doughnut)
+      const ctxStatus = document.getElementById('statusChart').getContext('2d');
+      new Chart(ctxStatus, {
+        type: 'doughnut',
+        data: {
+          labels: ['Abertos', 'Em Andamento', 'Concluídos', 'Aguardando Cliente'],
+          datasets: [{
+            data: [12, 8, 45, 5],
+            backgroundColor: [
+              '#dc3545',
+              '#ffc107',
+              '#198754',
+              '#6c757d'
+            ],
+            borderWidth: 0,
+            hoverOffset: 4
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          cutout: '70%',
+          plugins: {
+            legend: {
+              position: 'right',
+              labels: { boxWidth: 12, usePointStyle: true, padding: 20 }
+            }
+          }
+        }
+      });
+
+    });
+  </script>
+</body>
+</html>

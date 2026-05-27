@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Clientes | Versátil Tech</title>
+
+  <!-- Estilos globais do seu projeto -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/clientes.css">
+  <link rel="icon" type="image/png" href="assets/images/logo-versatil.png">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+  <!-- Ícones Phosphor -->
+  <script src="https://unpkg.com/@phosphor-icons/web" defer></script>
+</head>
+<!-- era: <body> -->
+<body data-page="clientes">
+  <div class="app-container">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <a href="dashboard.html" class="sidebar-header">
+        <img src="assets/images/logo-versatil.png" alt="Logo Versátil Tech" class="sidebar-logo">
+        <span class="sidebar-logo-text">Versátil Tech</span>
+      </a>
+      <nav class="sidebar-nav">
+        <a href="dashboard.html" class="nav-link"><i class="ph-fill ph-house"></i> <span>Dashboard</span></a>
+        <a href="clientes.html" class="nav-link active"><i class="ph-fill ph-users"></i> <span>Clientes</span></a>
+        <a href="tickets.html" class="nav-link"><i class="ph-fill ph-ticket"></i> <span>Tickets</span></a>
+        <a href="usuarios.html" class="nav-link"><i class="ph-fill ph-user-list"></i> <span>Usuários</span></a>
+        <a href="conhecimento.html" class="nav-link"><i class="ph-fill ph-books"></i> <span>Conhecimento</span></a>
+      </nav>
+    </aside>
+
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+
+    <!-- Main -->
+    <div class="main-content">
+      <!-- Navbar -->
+      <header class="navbar">
+        <div class="navbar-left">
+          <button class="mobile-menu-toggle" id="mobileMenuToggle"><i class="ph-fill ph-list"></i></button>
+          <h1 class="navbar-title">Gerenciamento de Clientes</h1>
+        </div>
+        <div class="navbar-right">
+          <div class="user-profile">
+            <span>[Nome]</span>
+            <div class="user-avatar"><span>U</span></div>
+          </div>
+          <a href="index.html" class="logout-button" title="Sair"><i class="ph-fill ph-sign-out"></i></a>
+        </div>
+      </header>
+
+      <main class="content-area">
+        <!-- Cabeçalho: apenas Busca + Ações (sem chips de status) -->
+        <div class="page-header">
+          <div class="header-left" style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
+            <div class="search-box header-search">
+              <i class="ph ph-magnifying-glass"></i>
+              <input type="search" id="searchInput" placeholder="Filtrar por Código, Nome Fantasia, Razão Social, CNPJ ou Rede...">
+            </div>
+          </div>
+
+          <div class="header-actions">
+            <button class="btn btn-export"><i class="ph-fill ph-export"></i> Exportar Selecionados</button>
+            <a href="cliente_formulario.html" class="btn btn-primary"><i class="ph-fill ph-plus-circle"></i> Novo Cliente</a>
+          </div>
+        </div>
+
+        <!-- Tabela (sem coluna Status; mantido “Acessos”) -->
+        <div class="table-container card">
+          <table id="clientsTable">
+            <thead>
+              <tr>
+                <th class="checkbox-cell">
+                  <input type="checkbox" id="selectAllCheckbox">
+                </th>
+                <th class="sortable" data-column="codigo">Código <i class="ph ph-caret-up-down"></i></th>
+                <th class="sortable" data-column="nome">Nome Fantasia <i class="ph ph-caret-up-down"></i></th>
+                <th class="sortable" data-column="cnpj">CNPJ <i class="ph ph-caret-up-down"></i></th>
+                <th class="sortable" data-column="rede">Rede <i class="ph ph-caret-up-down"></i></th>
+                <th class="acessos-cell">Acessos</th>
+                <th class="actions-header">Ações</th>
+              </tr>
+            </thead>
+            <tbody id="clientsTableBody">
+              <!-- Renderizado pelo JS (clientes.js) -->
+            </tbody>
+          </table>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Modal: Visualizar Acessos (abre sem sair desta página) -->
+  <div class="modal-overlay" id="viewAccessModalOverlay">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="viewAccessTitle">Acessos Remotos</h3>
+        <button class="modal-close-btn" id="closeViewAccessModalBtn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="table-container">
+          <table class="compact-table">
+            <thead>
+              <tr>
+                <th>Estação</th>
+                <th>Tipo</th>
+                <th>ID / Endereço</th>
+                <th>Usuário</th>
+                <th>Senha</th>
+              </tr>
+            </thead>
+            <tbody id="viewAccessTableBody">
+              <tr><td colspan="5" class="empty-message">Nenhum acesso cadastrado.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JS globais + da página -->
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/clientes.js" defer></script>
+</body>
+</html>

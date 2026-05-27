@@ -8,7 +8,7 @@
 
 Uma solução corporativa completa de **CRM e Gestão de Tickets (Helpdesk)**, desenvolvida para otimizar o fluxo de suporte técnico, organizar o atendimento a clientes e gerir credenciais de acesso remoto com máxima eficiência.
 
-🔗 **[Aceder à Demonstração ao Vivo (Netlify)](crm-operational-versatil.netlify.app)**
+🔗 **[Aceder à Demonstração ao Vivo (Netlify)](https://crm-operational-versatil.netlify.app/)**
 
 > ** Arquitetura do Projeto:** Este repositório público contém a **camada de interface (Frontend)**, preenchida com dados fictícios exclusivamente para fins de demonstração e portfólio. O motor real da aplicação — incluindo a API RESTful desenvolvida em **PHP/Laravel**, as regras de negócio e a base de dados **MySQL** — encontra-se num repositório privado para proteção de propriedade intelectual.
 
